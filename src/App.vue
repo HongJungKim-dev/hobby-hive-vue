@@ -1,85 +1,51 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import Navigation from '@/components/Navigation.vue'
+import Footer from '@/components/Footer.vue'
+import { useModalStore } from '@/stores/modalStore'
+import { useUploadModalStore } from '@/stores/uploadModalStore'
+import LoginModal from '@/components/LoginModal.vue'
+import UploadModal from '@/components/modal/UploadModal.vue'
+
+const modalStore = useModalStore()
+const uploadModalStore = useUploadModalStore()
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div id="app" class="app-layout">
+    <!-- 헤더 (Navigation) -->
+    <Navigation />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="main-content">
+      <RouterView />
+    </main>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+    <!-- 푸터 -->
+    <Footer />
 
-  <RouterView />
+    <!-- 모달들 -->
+    <LoginModal :isOpen="modalStore.isLoginModalOpen" @close="modalStore.closeLoginModal" />
+    <UploadModal
+      :isOpen="uploadModalStore.isUploadModalOpen"
+      @update:isOpen="uploadModalStore.closeUploadModal"
+    />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+/* 전체 레이아웃 스타일 */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 화면 전체 높이를 유지합니다 */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.main-content {
+  flex: 1; /* 메인 콘텐츠가 화면의 남은 공간을 채우도록 설정 */
+  padding: 20px;
+  background-color: #fff; /* 배경색 추가 (필요 시) */
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+/* 기존 네비게이션 스타일은 Navigation.vue로 이동 */
 </style>
