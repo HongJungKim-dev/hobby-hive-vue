@@ -14,6 +14,13 @@ https://github.com/HongJungKim-dev/hobby-hive
 
 이 프로젝트는 vue.js 환경으로 마이그레이션하면서 vue.js를 학습하고 적용해보는 프로젝트입니다.
 
+아래 작성한 캡쳐화면 및 고민한 사항도 위 Next.js레포에서 작성한 내용입니다.
+
+## 기술 스택
+
+- Vue.js, Pinia
+- Scss
+- Supabase
 
 ### 소개 페이지
 
@@ -39,21 +46,11 @@ https://github.com/HongJungKim-dev/hobby-hive
 
 ![alt text](image-5.png)
 
-## 기술 스택
-
-- Next.js, React, TypeScript
-- React Query
-- Scss, Ant Design
-- jest, vercel, git actions
-- Supabase
-
 ## 기능 사항
 
 - 로그인한 사용자는 취미 활동 이미지와 설명을 작성한 게시글을 업로드할 수 있습니다.
 - 로그인한 사용자는 취미 활동 게시글을 수정할 수 있습니다.
 - 로그인한 사용자는 취미 활동 게시글을 삭제할 수 있습니다.
-- 올린 취미 활동 게시글들을 확인할 수 있습니다. (SSR 페이지)
-- 소개 페이지를 확인할 수 있습니다. (SSG 페이지)
 - 태블릿, 모바일 반응형 레이아웃
 
 ## 고민한 사항
